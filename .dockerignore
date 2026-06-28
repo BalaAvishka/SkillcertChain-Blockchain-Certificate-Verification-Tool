@@ -1,0 +1,34 @@
+# ── Exclude from Docker build context ────────────────────────────────────────
+
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.iml
+
+# Node (contracts dependencies - large, not needed in Docker build)
+contracts/node_modules
+contracts/artifacts
+contracts/cache
+
+# Maven build output (rebuilt inside Docker)
+target
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+*.key
+*.pem
+
+# Logs
+*.log
+logs
+
+# Docs
+*.md
