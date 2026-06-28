@@ -1,0 +1,47 @@
+version: '3.9'
+
+services:
+  # ── SkincertChain Java App ──────────────────────────────────────────────────
+  app:
+    build: .
+    container_name: skincertchain-app
+    ports:
+      - "8080:8080"
+    environment:
+      ETH_NODE_URL:     http://ganache:8545
+      ETH_PRIVATE_KEY:  ${ETH_PRIVATE_KEY:-}
+      CONTRACT_ADDRESS: ${CONTRACT_ADDRESS:-0x0000000000000000000000000000000000000000}
+      IPFS_API_URL:     http://ipfs:5001
+    depends_on:
+      - ganache
+      - ipfs
+    restart: unless-stopped
+
+  # ── Ganache – local Ethereum test network ───────────────────────────────────
+  ganache:
+    image: trufflesuite/ganache:latest
+    container_name: skincertchain-ganache
+    ports:
+      - "8545:8545"
+    command: >
+      --deterministic
+      --accounts 10
+      --mnemonic "skincertchain test mnemonic twelve words here please do not use"
+      --chain.chainId 1337
+      --server.host 0.0.0.0
+    restart: unless-stopped
+
+  # ── IPFS Node ───────────────────────────────────────────────────────────────
+  ipfs:
+    image: ipfs/kubo:latest
+    container_name: skincertchain-ipfs
+    ports:
+      - "4001:4001"   # Swarm
+      - "5001:5001"   # API
+      - "8090:8080"   # Gateway (host 8090 to avoid clash with app)
+    volumes:
+      - ipfs_data:/data/ipfs
+    restart: unless-stopped
+
+volumes:
+  ipfs_data:
