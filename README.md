@@ -1,4 +1,4 @@
-# ⛓️ SkincertChain
+#  SkillcertChain
 
 > **Blockchain Certificate Verification System**  
 > Tamper-proof, decentralized credential issuance and verification using Ethereum smart contracts + IPFS.
