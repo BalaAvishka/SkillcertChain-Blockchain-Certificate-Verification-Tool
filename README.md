@@ -3,7 +3,6 @@
 > **Blockchain Certificate Verification System**  
 > Tamper-proof, decentralized credential issuance and verification using Ethereum smart contracts + IPFS.
 
-[![CI/CD](https://github.com/yourusername/skincertchain/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/skincertchain/actions)
 [![Java](https://img.shields.io/badge/Java-17-orange?logo=openjdk)](https://openjdk.org/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2-green?logo=spring)](https://spring.io/projects/spring-boot)
 [![Solidity](https://img.shields.io/badge/Solidity-0.8.19-blue?logo=solidity)](https://soliditylang.org/)
